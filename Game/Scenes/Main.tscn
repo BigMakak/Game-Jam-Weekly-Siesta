@@ -1,3 +1,20 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Main" type="Node"]
+
+[node name="Player_Kine" parent="." instance=ExtResource( 1 )]
+position = Vector2( 108.546, 274.339 )
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( 162.23, 448.314 )
+scale = Vector2( -6.54564, -1.85711 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource( 1 )
