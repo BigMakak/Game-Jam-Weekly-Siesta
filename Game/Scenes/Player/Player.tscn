@@ -1,27 +1,58 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Art/icon.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player/sprites/ovelha correndo/ovelha correndo 1.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player/sprites/ovelha pulao/ovelha bb jump5.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Player/sprites/ovelha pulao/ovelha bb jump6.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Player/sprites/ovelha correndo/ovelha correndo 6.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Player/sprites/ovelha correndo/ovelha correndo 4.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Player/sprites/ovelha correndo/ovelha correndo 2.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/Player/sprites/ovelha correndo/ovelha correndo 5.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Player/sprites/ovelha pulao/ovelha bb jump8.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/Player/sprites/ovelha pulao/ovelha bb jump7.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Player/sprites/ovelha pulao/ovelha bb jump9.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/Player/sprites/ovelha pulao/ovelha bb jump4.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Player/sprites/ovelha pulao/ovelha bb jump10.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/Player/sprites/ovelha pulao/ovelha bb jump3.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/Player/sprites/ovelha pulao/ovelha bb jump1.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/Player/sprites/ovelha correndo/ovelha correndo 3.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/Player/sprites/ovelha pulao/ovelha bb jump2.png" type="Texture" id=17]
 
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "jump",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 16 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 10.0
+} ]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.2311, 32.9223 )
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 17.206
+height = 27.8378
 
 [node name="Player_Kine" type="KinematicBody2D" groups=[
 "Player",
 ]]
-position = Vector2( 406.376, 188.11 )
+position = Vector2( 424.214, 229.732 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Player_Sprite" type="Sprite" parent="."]
-position = Vector2( 53.9719, 51.7078 )
-scale = Vector2( 1.7946, 1.7946 )
-texture = ExtResource( 2 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 62.4756, 55.9525 )
+scale = Vector2( 0.239563, 0.239563 )
+frames = SubResource( 1 )
+animation = "jump"
+frame = 2
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 53.9948, 50.8001 )
+position = Vector2( 62.8028, 51.2248 )
 scale = Vector2( 4.78683, 1.63698 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )

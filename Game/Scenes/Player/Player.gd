@@ -18,6 +18,11 @@ func _process(delta):
 		#Jump speed é negativo porque o eixo do jogo é invertido da nossa norma. Para subir temos de decrementar o Y.
 		velocity.y = -JUMP_SPEED
 	
+	if is_on_floor():
+		$AnimatedSprite.play("walk")
+	else:
+		$AnimatedSprite.play("jump")
+	
 	#Função especifica de KinematicBody2D  
 	#Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately
 	#Inserimos o Vecto2.UP para dizermos que estamos a aumentar a velocidade para cima na perspectiva do nosso jogo

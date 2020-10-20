@@ -9,6 +9,7 @@ func _ready():
 	get_tree().call_group("background","hide")
 
 func _on_Timer_timeout():
+	pass
 	var obstacle = OBSTACLE.instance()
 	add_child(obstacle)    #Basicamente colocou-se uma scene dentro de uma scene
 
