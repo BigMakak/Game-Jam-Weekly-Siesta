@@ -4,6 +4,9 @@ const OBSTACLE = preload("res://Scenes/Obstacles/Obstacle.tscn")
 
 func _ready():
 	$Player_Kine.hide()
+	#Damos Hide a layer para não começar logo o background a aparecer
+	#Vamos chamar o group de background
+	get_tree().call_group("background","hide")
 
 func _on_Timer_timeout():
 	var obstacle = OBSTACLE.instance()
@@ -12,6 +15,8 @@ func _on_Timer_timeout():
 func start_game():
 	$Player_Kine.start_player()
 	$SpawnTimer.start()
+	#Mostrar o background
+	get_tree().call_group("background","show")
 	
 
 #Basicamente esta função vai desligar o SpawnTimer e dizer ao hud para mostrar o game over.
@@ -21,5 +26,7 @@ func _on_Player_hit():
 	$SpawnTimer.stop()
 	#Fazer com que todos os obstacle desapareçam
 	get_tree().call_group("obstacle","queue_free")
+	#Dar hide ao background
+	get_tree().call_group("background","hide")
 	#Dizer ao HUD para mostrar o game over.
 	$HUD.show_game_over()
