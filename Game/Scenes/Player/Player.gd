@@ -6,11 +6,7 @@ const JUMP_SPEED = 400
 #Começar o vector a [0,0]
 var velocity = Vector2.ZERO
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+signal hit
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,3 +23,16 @@ func _process(delta):
 	#Inserimos o Vecto2.UP para dizermos que estamos a aumentar a velocidade para cima na perspectiva do nosso jogo
 	#Assim a função is_on_floor() sabe onde fica o chao, fica no valor negativo da velocity, e começa a funcionar da maneira que queremos para este jogo
 	move_and_slide(velocity,Vector2.UP)
+
+#Criação da funçao para acabar o jogo.
+#O node player vai pertencer a um grupo para ser mais facil de chamar as funçoes necessárias
+func end_game():
+	hide()
+	emit_signal("hit")
+	#Remover o collisionShape2D para nao estragar o jogo.
+	#$CollisionShape2D.set_deferred("disabled",true)
+
+func start_player():
+	show()
+	#$CollisionShape2D.disabled = false
+	

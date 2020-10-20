@@ -8,3 +8,7 @@ func _process(delta):
 #Eliminar obstáculos que saem do ecrã
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+
+func _on_Obstacle_body_entered(body):
+	get_tree().call_group("Player","end_game")
