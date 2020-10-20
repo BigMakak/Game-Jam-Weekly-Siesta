@@ -9,6 +9,7 @@ func _process(delta):
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
-
+#So queremos que isto aconteça quando o obstaculo entra em contacto com o player
+#Para isto o Player e o obstaculo tem de estar na mesma Mask
 func _on_Obstacle_body_entered(body):
 	get_tree().call_group("Player","end_game")

@@ -29,10 +29,8 @@ func _process(delta):
 func end_game():
 	hide()
 	emit_signal("hit")
-	#Remover o collisionShape2D para nao estragar o jogo.
-	#$CollisionShape2D.set_deferred("disabled",true)
 
 func start_player():
 	show()
-	#$CollisionShape2D.disabled = false
+	
 	
