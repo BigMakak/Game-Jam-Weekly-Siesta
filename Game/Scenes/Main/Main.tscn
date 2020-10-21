@@ -1,13 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/HUD/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scenes/Main/ParallaxBackground.gd" type="Script" id=4]
 [ext_resource path="res://Art/BG_SLEEP_-_Cortada.png" type="Texture" id=5]
 [ext_resource path="res://Art/SPOILER_BG_FLOOR.png" type="Texture" id=6]
+[ext_resource path="res://Art/sprites/nuvem1.png" type="Texture" id=7]
+[ext_resource path="res://Art/sprites/nuvem2.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+outline_size = 3
+outline_color = Color( 0.0392157, 0, 0, 1 )
+font_data = ExtResource( 3 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -31,8 +39,6 @@ shape = SubResource( 1 )
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="HUD" parent="." instance=ExtResource( 3 )]
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scale = Vector2( 0.5, 0.5 )
 transform = Transform2D( 0.5, 0, 0, 0.5, 0, 0 )
@@ -42,7 +48,6 @@ script = ExtResource( 4 )
 "background",
 ]]
 scale = Vector2( 2.12, 1 )
-motion_scale = Vector2( 10, 10 )
 motion_mirroring = Vector2( 1200, 0 )
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/SkyImage"]
@@ -50,6 +55,32 @@ margin_right = 40.0
 margin_bottom = 40.0
 rect_scale = Vector2( 30.1572, 36.094 )
 color = Color( 0.65098, 0.862745, 0.937255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 5, 5 )
+motion_mirroring = Vector2( 2500, 0 )
+
+[node name="cloud01" type="TextureRect" parent="ParallaxBackground/Clouds"]
+margin_left = 42.3785
+margin_top = 182.228
+margin_right = 1093.38
+margin_bottom = 655.228
+rect_scale = Vector2( 0.526604, 0.526604 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cloud02" type="TextureRect" parent="ParallaxBackground/Clouds"]
+margin_left = 1627.34
+margin_top = 67.8057
+margin_right = 2678.34
+margin_bottom = 567.806
+rect_scale = Vector2( 0.526604, 0.526604 )
+texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -88,6 +119,20 @@ texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -97.5
+margin_right = 97.5
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 2 )
+text = "Score"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreTimer" type="Timer" parent="."]
 [connection signal="hit" from="Player_Kine" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_Timer_timeout"]
-[connection signal="start_game" from="HUD" to="." method="start_game"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]

@@ -1,6 +1,20 @@
 extends Area2D
 
-export var obs_speed = 500
+#Vai determinar um numero random quando intaciamos um obstacle na main scene do jogo 
+onready var obs_speed = rand_range(450,550)
+
+#Lista de nomes das sprites nas animated sprites
+var obstacle_sprites = ["box","fence","stone"]
+
+func _ready():
+	#Dizer ao engine para escolher numeros random para a função randi()
+	#Senao a cada vez que se joga os numeros vao ser sempre os mesmo random
+	randomize()
+	#Escolher uma localizao random da lista. O randi vai de 0 ate ao maximo da lista
+	var curr_obstacle = obstacle_sprites[randi() % obstacle_sprites.size()]
+	
+	#Dizer a Animatedsprite qual vai ser 
+	$ObstacleSprites.animation = curr_obstacle
 
 func _process(delta):
 	position.x -= obs_speed * delta #Permite deslocar até a esquerda. Multiplicar por delta para manter coerência entre

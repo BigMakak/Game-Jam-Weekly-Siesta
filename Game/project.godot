@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Game-Jam-Siesta"
-run/main_scene="res://Scenes/Main/Main.tscn"
+run/main_scene="res://Scenes/TittleScreen/TittleScreen.tscn"
 config/icon="res://Art/icon.png"
+
+[autoload]
+
+Global="*res://Scenes/Global/Global.tscn"
 
 [display]
 

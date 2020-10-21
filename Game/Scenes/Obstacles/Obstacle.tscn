@@ -1,10 +1,30 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Art/sprites/cerca.png" type="Texture" id=1]
+[ext_resource path="res://Art/sprites/cerca-02.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Obstacles/Obstacle.gd" type="Script" id=2]
+[ext_resource path="res://Art/sprites/pedra.png" type="Texture" id=3]
+[ext_resource path="res://Art/sprites/caixa.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "box",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "stone",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "fence",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.5786, 72 )
+extents = Vector2( 25.927, 67.738 )
 
 [node name="Obstacle" type="Area2D" groups=[
 "obstacle",
@@ -16,17 +36,19 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -0.529713, 0.52977 )
-scale = Vector2( 0.330058, 0.315968 )
-texture = ExtResource( 1 )
+[node name="ObstacleSprites" type="AnimatedSprite" parent="."]
+position = Vector2( -7.53613, 1.54285 )
+scale = Vector2( 0.306722, 0.300425 )
+frames = SubResource( 2 )
+animation = "stone"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -6.46582, 1.5 )
+[node name="CollisionRectangle" type="CollisionShape2D" parent="."]
+position = Vector2( -8.71338, 3.17407 )
+scale = Vector2( 1, 1.01884 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( -6.72699, -1.12048 )
+position = Vector2( -8.59991, -1.12048 )
 scale = Vector2( 1.59567, 6.8722 )
 [connection signal="body_entered" from="." to="." method="_on_Obstacle_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

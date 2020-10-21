@@ -17,11 +17,17 @@ func _process(delta):
 	if Input.is_action_just_pressed("Jump_Keys") and is_on_floor():
 		#Jump speed é negativo porque o eixo do jogo é invertido da nossa norma. Para subir temos de decrementar o Y.
 		velocity.y = -JUMP_SPEED
+		#Dar o som do salto 
+		$ASPlayerJump.play()
 	
 	if is_on_floor():
 		$AnimatedSprite.play("walk")
+	elif velocity.y > 0:
+		#Se a velocidade em Y for maior que 0 entao a ovelha esta a cair. Mudamos a animação para down.
+		$AnimatedSprite.play("down")
 	else:
-		$AnimatedSprite.play("jump")
+		#Senao ela vai estar a subir neste caso o y vai ser negativo e vamos mudar a animação para up
+		$AnimatedSprite.play("up")
 	
 	#Função especifica de KinematicBody2D  
 	#Moves the body along a vector. If the body collides with another, it will slide along the other body rather than stop immediately
@@ -32,10 +38,7 @@ func _process(delta):
 #Criação da funçao para acabar o jogo.
 #O node player vai pertencer a um grupo para ser mais facil de chamar as funçoes necessárias
 func end_game():
-	hide()
 	emit_signal("hit")
 
-func start_player():
-	show()
 	
 	
