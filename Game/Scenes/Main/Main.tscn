@@ -122,11 +122,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HorizonLine" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 2000, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/HorizonLine"]
+margin_left = -9.1333
+margin_top = 973.199
+margin_right = 30.8667
+margin_bottom = 1013.2
+rect_scale = Vector2( 64.6734, 0.252107 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScoreLabel" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -97.5
-margin_right = 97.5
+margin_left = -158.045
+margin_right = 36.9554
 margin_bottom = 78.0
 custom_fonts/font = SubResource( 2 )
 text = "Score"
