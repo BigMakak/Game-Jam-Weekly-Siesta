@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 #Constantes do player como a velocidade da gravidade e do speed do jump
-const GRAVITY = 10
-const JUMP_SPEED = 400
+const GRAVITY = 8
+const JUMP_SPEED = 380
 #Começar o vector a [0,0]
 var velocity = Vector2.ZERO
 
@@ -16,7 +16,7 @@ func _process(delta):
 	#Podiamos usar a função is_on_wall() e o engine verifica se o player esta a bater num static body.
 	if Input.is_action_just_pressed("Jump_Keys") and is_on_floor():
 		#Jump speed é negativo porque o eixo do jogo é invertido da nossa norma. Para subir temos de decrementar o Y.
-		velocity.y = -JUMP_SPEED
+		velocity.y = -JUMP_SPEED 
 		#Dar o som do salto 
 		$ASPlayerJump.play()
 	
@@ -39,6 +39,9 @@ func _process(delta):
 #O node player vai pertencer a um grupo para ser mais facil de chamar as funçoes necessárias
 func end_game():
 	emit_signal("hit")
+
+func coin_pickup():
+	Global.curr_score += 5
 
 	
 	

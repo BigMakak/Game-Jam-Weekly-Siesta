@@ -36,7 +36,9 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource( 1 )
 
-[node name="SpawnTimer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="." groups=[
+"timer",
+]]
 wait_time = 3.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -132,7 +134,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreTimer" type="Timer" parent="."]
+[node name="ScoreTimer" type="Timer" parent="." groups=[
+"timer",
+]]
+
+[node name="Position2DUp" type="Position2D" parent="."]
+position = Vector2( 1261.6, 438.442 )
+
+[node name="Position2DDown" type="Position2D" parent="."]
+position = Vector2( 1309.15, 563.594 )
+
+[node name="CoinSpawner" type="Timer" parent="." groups=[
+"timer",
+]]
+wait_time = 5.0
 [connection signal="hit" from="Player_Kine" to="." method="_on_Player_hit"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="CoinSpawner" to="." method="_on_CoinSpawner_timeout"]
