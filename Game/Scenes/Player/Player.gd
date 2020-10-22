@@ -41,6 +41,7 @@ func end_game():
 	emit_signal("hit")
 
 func coin_pickup():
+	$ASPCoin.play()
 	Global.curr_score += 5
 
 	

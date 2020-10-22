@@ -1,7 +1,7 @@
 extends Node
 
 const OBSTACLE = preload("res://Scenes/Obstacles/Obstacle.tscn")
-const COIN = preload("res://Coin.tscn")
+const COIN = preload("res://Scenes/Coin/Coin.tscn")
 
 func _ready():
 	randomize()

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/No Copyright Background Music 30min LOOP.ogg-66ff60ad4941d70052d7fb4a2da21851.oggstr"
+
+[deps]
+
+source_file="res://Scenes/Global/No Copyright Background Music 30min LOOP.ogg"
+dest_files=[ "res://.import/No Copyright Background Music 30min LOOP.ogg-66ff60ad4941d70052d7fb4a2da21851.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
